@@ -1,0 +1,72 @@
+/* Ensure full width and reset default spacing */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+
+  font-family: sans-serif;
+}
+
+header {
+  width: 100%;
+}
+
+/* Navbar styling */
+
+  #id1 {
+  background-color: navy;
+  color: wheat;
+  width: 100vw; /* Viewport width to span full screen */
+  box-sizing: border-box;
+  display: flex;
+  
+  justify-content: flex-start;
+ gap: 20rem;
+  padding: 0.5rem 2rem;
+}
+
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between; /* aligns logo on the left, links on the right */
+  align-items: center;
+  padding: 0.5rem 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  color: black;
+}
+
+/* Logo */
+.logo-container {
+  flex-shrink: 0;
+}
+
+.nic-logo {
+  height: 40px;
+  object-fit: contain;
+}
+
+/* Navigation links */
+.nav-links {
+  display: flex;
+  color: white;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+
+  padding: 0;
+  flex-wrap: wrap;
+  
+  margin-left: 1rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none; /* optional: removes underline */
+}
+
+.nav-links a:hover {
+  color: #f0f0f0; /* optional: lighter shade on hover */
+}
