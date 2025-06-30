@@ -1,57 +1,62 @@
 import React, { useState } from 'react';
 import './Apply.css';
-import { useParams } from 'react-router-dom';
 
 const Apply = () => {
-  const { jobId } = useParams();
-
   const [formData, setFormData] = useState({
     fullName: '',
-    email: '',
-    phone: '',
     degree: '',
     specialization: '',
-    percentage: '',
+    cgpa: '',
     college: '',
     experience: '',
     resume: null,
-    coverLetter: null
+    coverLetter: null,
   });
 
   const handleChange = (e) => {
-    const { name, value, type, files } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === 'file' ? files[0] : value
-    });
+    const { name, value, files } = e.target;
+    if (files) {
+      setFormData({ ...formData, [name]: files[0] });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Application Submitted:", formData);
+    console.log('Submitted data:', formData);
     alert("Application submitted successfully!");
   };
 
   return (
-    <div className="apply-form-container">
-      <h2>Apply for Job ID: {jobId}</h2>
-      <form className="apply-form" onSubmit={handleSubmit}>
-        <input type="text" name="fullName" placeholder="Full Name" onChange={handleChange} required />
-        <input type="email" name="email" placeholder="Email Address" onChange={handleChange} required />
-        <input type="text" name="phone" placeholder="Phone Number" onChange={handleChange} required />
-        <input type="text" name="degree" placeholder="Degree (e.g., B.Tech)" onChange={handleChange} required />
-        <input type="text" name="specialization" placeholder="Specialization (e.g., CSE)" onChange={handleChange} required />
-        <input type="text" name="percentage" placeholder="CGPA/Percentage" onChange={handleChange} required />
-        <input type="text" name="college" placeholder="College Name" onChange={handleChange} required />
-        <input type="text" name="experience" placeholder="Job Experience (if any)" onChange={handleChange} />
+    <div className="apply-container">
+      <h2>Apply for Job</h2>
+      <form onSubmit={handleSubmit} className="apply-form">
+        <label>Full Name</label>
+        <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} required />
 
-        <label>Upload Resume:</label>
-        <input type="file" name="resume" onChange={handleChange} accept=".pdf,.doc,.docx" required />
+        <label>Degree</label>
+        <input type="text" name="degree" value={formData.degree} onChange={handleChange} required />
 
-        <label>Upload Cover Letter:</label>
-        <input type="file" name="coverLetter" onChange={handleChange} accept=".pdf,.doc,.docx" />
+        <label>Specialization</label>
+        <input type="text" name="specialization" value={formData.specialization} onChange={handleChange} required />
 
-        <button type="submit">Submit Application</button>
+        <label>CGPA / Percentage</label>
+        <input type="text" name="cgpa" value={formData.cgpa} onChange={handleChange} required />
+
+        <label>College Name</label>
+        <input type="text" name="college" value={formData.college} onChange={handleChange} required />
+
+        <label>Job Experience (in years)</label>
+        <input type="text" name="experience" value={formData.experience} onChange={handleChange} required />
+
+        <label>Upload Resume (PDF)</label>
+        <input type="file" name="resume" accept=".pdf" onChange={handleChange} required />
+
+        <label>Upload Cover Letter (PDF)</label>
+        <input type="file" name="coverLetter" accept=".pdf" onChange={handleChange} />
+
+        <button type="submit" className="submit-btn">Submit Application</button>
       </form>
     </div>
   );
