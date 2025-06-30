@@ -1,0 +1,38 @@
+.job-detail-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.job-detail-container h2 {
+  color: #0073e6;
+}
+
+.job-detail-container .company,
+.job-detail-container .location {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.job-detail-container ul {
+  padding-left: 20px;
+}
+
+.apply-button {
+  display: inline-block;
+  margin-top: 20px;
+  background-color: #0073e6;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.apply-button:hover {
+  background-color: #005bb5;
+}
+
+
