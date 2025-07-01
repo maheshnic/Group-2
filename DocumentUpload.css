@@ -1,0 +1,86 @@
+/* Fullscreen layout */
+.fullscreen-container {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #e0eafc, #cfdef3);
+ margin-top: 10px;
+  align-items: center;
+  padding: 10px;
+}
+
+/* Card Styling */
+.upload-card {
+  width: 100%;
+  max-width: 800px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 30px 40px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Header */
+.upload-card h1 {
+  text-align: center;
+  color: #1a237e;
+  margin-bottom: 30px;
+}
+
+/* Input Section */
+.input-group {
+  margin-bottom: 25px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+input[type="file"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+/* Preview Styles */
+.preview {
+  margin-top: 12px;
+}
+
+.preview p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #388e3c;
+}
+
+.preview-actions {
+  margin-top: 6px;
+  display: flex;
+  gap: 15px;
+}
+
+.preview a {
+  text-decoration: none;
+  color: #1a73e8;
+  font-weight: 500;
+}
+
+.delete-btn {
+  background-color: #ff5252;
+  border: none;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #d32f2f;
+}
