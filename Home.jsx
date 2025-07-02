@@ -1,39 +1,88 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Home.css';
 
-export default function Home() {
+const Home = () => {
+  const [notifications, setNotifications] = useState([
+    { icon: '📄', text: 'Exam Notification: Technical Posts – Apply by July 15', read: false },
+    { icon: '💬', text: 'Walk-in Interviews: Marketing Division – June 22', read: false },
+    { icon: '💻', text: 'Online Application for Data Analyst – Open Now', read: false },
+    { icon: '✅', text: 'Document Verification: Group B Roles – Starts July 5', read: true },
+    { icon: '📌', text: 'Resume Workshop: Register by June 30', read: true },
+    { icon: '📍', text: 'Job Fair (North East Zone): July 10–12', read: true },
+    { icon: '🕐', text: 'Internship Call: Govt Sector – Deadline June 28', read: true },
+  ]);
+
+  const unreadCount = notifications.filter(n => !n.read).length;
+
+  const markAsRead = (index) => {
+    const updated = [...notifications];
+    updated[index].read = true;
+    setNotifications(updated);
+  };
+
   return (
-    <div className="home-page">
-      <section className="hero-banner">
-        <h1>National Informatics Centre</h1>
-        <p>Technology Partner of the Government of India</p>
-      </section>
-
-      <section className="highlights">
-        <h2>What's New</h2>
-        <ul>
-          <li>Launch of e-Vidhan Application for Puducherry Assembly – June 12, 2025</li>
-          <li>XGN 2.0 Portal launched by Gujarat CM – June 11, 2025</li>
-          <li>Hostel Management App for Chhattisgarh – June 10, 2025</li>
-        </ul>
-      </section>
-
-      <section className="about-nic">
-        <h2>About NIC</h2>
-        <p>
-          NIC provides ICT and eGovernance support to the Government. Established in 1976, it has played a pivotal role in implementing digital initiatives across ministries and states.
-        </p>
-      </section>
-
-      <section className="services">
-        <h2>Our Offerings</h2>
-        <div className="service-grid">
-          <div className="service-card">e-Governance Solutions</div>
-          <div className="service-card">Cloud & Data Centers</div>
-          <div className="service-card">Cyber Security</div>
-          <div className="service-card">Mobile App Development</div>
+    <div className="home-container">
+      <header className="header header-compact">
+        <div className="header-left">
+          <img src="/logo.png" alt="Candidate Logo" className="logo" />
         </div>
-      </section>
+        <div className="header-right">
+          <div className="top-row">
+            <h1 className="main-title">Select a section to proceed:</h1>
+            <div className="notification-icon">
+              🔔
+              {unreadCount > 0 && <span className="notification-count">{unreadCount}</span>}
+            </div>
+          </div>
+          <nav className="nav-links">
+            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/profile">Edit Profile</Link>
+            <Link to="/profile/documents">Upload/View Resume</Link>
+            <Link to="/jobs">Browse Jobs</Link>
+            <Link to="/applications">Application History</Link>
+            <Link to="/bookmarked_jobs">Saved Jobs</Link>
+            <Link to="/settings">Settings</Link>
+          </nav>
+        </div>
+      </header>
+
+      <main className="main-content with-announcements">
+        <div className="welcome-section">
+          <div className="welcome-left">
+            <h2 className="welcome-title">Welcome to Candidate Portal</h2>
+            <img src="/team.jpg" alt="Team working" className="announcement-image" />
+          </div>
+
+          <div className="announcement-box">
+            <h3 className="announcement-heading">📢 What's New</h3>
+            <ul className="announcement-list">
+              {notifications.map((item, index) => (
+                <li
+                  key={index}
+                  className={item.read ? '' : 'unread'}
+                  onClick={() => markAsRead(index)}
+                >
+                  <span className="icon">{item.icon}</span> {item.text}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </main>
+
+      <footer className="footer">
+        <p>© 2025 Candidate Portal. All rights reserved.</p>
+      </footer>
     </div>
   );
-}
+};
+
+export default Home;
+
+
+
+
+
+
+
