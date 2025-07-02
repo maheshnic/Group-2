@@ -1,0 +1,121 @@
+.applications-container {
+  padding: 2rem;
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Table styling */
+.application-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+}
+
+.application-table th,
+.application-table td {
+  border: 1px solid #ddd;
+  padding: 12px 16px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.application-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+.application-table td a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.application-table td a:hover {
+  text-decoration: underline;
+}
+
+/* Status badge styling */
+.badge {
+  padding: 6px 10px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.submitted {
+  background-color: #007bff;
+}
+
+.review {
+  background-color: #ffc107;
+  color: black;
+}
+
+.interview {
+  background-color: #28a745;
+}
+
+.rejected {
+  background-color: #dc3545;
+}
+
+.accepted {
+  background-color: #00c853;
+}
+
+/* Cancel Button */
+.cancel-btn {
+  padding: 6px 12px;
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background-color: #d9363e;
+}
+
+/* Card layout for mobile */
+.application-card-grid {
+  display: none;
+}
+
+.application-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  font-family: Arial, sans-serif;
+}
+
+@media (max-width: 768px) {
+  .application-table {
+    display: none;
+  }
+
+  .application-card-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+
+  .application-card h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+  }
+
+  .application-card p {
+    margin: 6px 0;
+    font-size: 0.95rem;
+  }
+}

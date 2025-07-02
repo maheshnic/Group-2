@@ -1,0 +1,32 @@
+.status {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.under-review {
+  background-color: #f0ad4e;
+  color: white;
+}
+
+.interview {
+  background-color: #5cb85c;
+  color: white;
+}
+
+.accepted {
+  background-color: #28a745;
+  color: white;
+}
+
+.rejected {
+  background-color: #d9534f;
+  color: white;
+}
+
+.submitted {
+  background-color: #007bff;
+  color: white;
+}
