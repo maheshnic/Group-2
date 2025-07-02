@@ -1,98 +1,163 @@
 .jobs-container {
-  max-width: 1000px;
-  margin: auto;
   padding: 2rem;
+  background-color: #f7f9fc;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: #222;
 }
 
 .filter-section {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
   margin-bottom: 2rem;
-  justify-content: space-between;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-.filter-section input,
+.filter-section input[type="text"],
 .filter-section select {
-  padding: 10px;
-  font-size: 14px;
-  width: 200px;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  flex: 1;
+  min-width: 180px;
+}
+
+.checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
 }
 
 .checkboxes label {
-  margin-right: 10px;
+  font-size: 0.95rem;
 }
 
 .filter-buttons {
   display: flex;
-  gap: 10px;
+  gap: 1rem;
+  margin-top: 0.5rem;
 }
 
 .filter-buttons button {
-  padding: 8px 14px;
-  font-size: 14px;
+  padding: 0.6rem 1rem;
+  border: none;
+  background-color: #0077cc;
+  color: white;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-.reset {
-  background-color: #ddd;
-  color: #000;
+.filter-buttons .reset {
+  background-color: #f44336;
 }
 
-.job-cards {
-  display: flex;
-  flex-direction: column;
+.job-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.5rem;
 }
 
-.job-card {
-  background: #f9f9f9;
+.job-card-grid {
+  background-color: white;
   padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: 0.3s ease;
+  position: relative;
 }
 
-.job-card h3 {
+.job-card-grid:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.company-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.job-card-grid h3 {
+  font-size: 1.2rem;
   margin: 0;
-  color: #0073e6;
+  color: #0b63ce;
 }
 
-.job-card p {
-  margin: 6px 0;
+.job-card-grid p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
 }
 
-.badge {
+.job-card-grid .badge {
   display: inline-block;
-  background-color: #0073e6;
-  color: white;
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-}
-
-.desc {
-  color: #444;
-  font-size: 14px;
+  background-color: #e3f2fd;
+  color: #0277bd;
+  padding: 0.3rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
 }
 
 .job-actions {
-  margin-top: 10px;
+  margin-top: 0.8rem;
   display: flex;
-  gap: 10px;
+  justify-content: space-between;
   align-items: center;
 }
 
 .apply-btn {
   background-color: #28a745;
+  padding: 0.5rem 1rem;
   color: white;
-  padding: 8px 12px;
-  border-radius: 4px;
+  border: none;
   text-decoration: none;
+  border-radius: 5px;
 }
 
 .bookmark-btn {
-  font-size: 18px;
+  background: url('/icons/bookmark.svg') no-repeat center center;
+  background-size: 20px 20px;
+  border: none;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  background-color: transparent;
+}
+.view-btn {
+  background-color: #6c757d;
+  color: white;
+  padding: 8px 12px;
+  margin-right: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.view-btn:hover {
+  background-color: #5a6268;
+}
+.bookmark-btn {
   background: none;
   border: none;
+  font-size: 1.4rem;
   cursor: pointer;
+  color: gray;
+  transition: color 0.3s ease;
+}
+
+.bookmark-btn.bookmarked {
+  color: gold;
 }
