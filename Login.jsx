@@ -1,81 +1,117 @@
 import React, { useState } from 'react';
 import './Login.css';
+import { Link } from 'react-router-dom';
 
 export default function Login() {
   const [mobile, setMobile] = useState('');
-  const [otpSent, setOtpSent] = useState(false);
+  const [countryCode, setCountryCode] = useState('+91');
+  const [captcha, setCaptcha] = useState('');
   const [otp, setOtp] = useState('');
+  const [otpSent, setOtpSent] = useState(false);
 
-  const sendOtp = () => {
-    // You can hook this with backend SMS service
-    if (mobile.match(/^[6-9]\d{9}$/)) {
-      alert('OTP sent to ' + mobile);
-      setOtpSent(true);
-    } else {
-      alert('Enter valid mobile number');
-    }
+  const handleEmailLogin = (e) => {
+    e.preventDefault();
+    alert('🔐 Email login submitted (UI only)');
   };
 
-  const handleSubmit = (e) => {
+  const handleMobileLogin = (e) => {
     e.preventDefault();
-    alert('Login submitted');
-    // Add authentication logic here
+
+    const validMobile = /^[6-9]\d{9}$/.test(mobile.trim());
+    if (!validMobile) {
+      alert('❗ Enter a valid 10-digit mobile number starting with 6-9');
+      return;
+    }
+
+    if (!captcha.trim()) {
+      alert('❗ Captcha is required');
+      return;
+    }
+
+    alert(`📲 OTP sent to ${countryCode} ${mobile}`);
+    setOtpSent(true);
+  };
+
+  const handleOtpSubmit = () => {
+    if (otp.trim() === '123456') {
+      alert('✅ OTP verified. Logged in successfully (UI only)');
+    } else {
+      alert('❌ Invalid OTP. Try again.');
+    }
   };
 
   return (
     <div className="login-page">
+      {/* Email Login Box */}
       <div className="login-box">
-        <h2 style={{color:'brown'}}>Welcome to LOGIN Page </h2>
-        <form onSubmit={handleSubmit}>
-          <input type="email" placeholder="Email" required />
-
-          <input type="text" placeholder="Username " required />
+        <h2>Email Login</h2>
+        <form onSubmit={handleEmailLogin}>
+         
+          <input type="text" placeholder="Email" required />
           <input type="password" placeholder="Password" required />
-
           <input type="text" placeholder="Enter Captcha" required />
           <p className="captcha-demo">Captcha: <strong>AB12X9</strong></p>
-        
-              <button type="submit">Login</button>
-<br/>
-<p className="alt-link">
-  <a
-    href="#"
-    onClick={(e) => {
-      e.preventDefault();
-      alert("Please enter your phone number to reset your password.");
-      
-    }}
-  >
-    Forgot Password?
-  </a>
-</p>
+          <button type="submit">Login</button>
 
-          <input
-            type="tel"
-            placeholder="Mobile Number"
-            value={mobile}
-            onChange={(e) => setMobile(e.target.value)}
-            pattern="[6-9]{1}[0-9]{9}"
-            title="Enter a valid mobile number"
-            required
-          />
-          <button id='s1' type="button" onClick={sendOtp}>Send OTP</button>
+          <p className="alt-link">
+            <Link to="/forgot-password">Forgot Password?</Link>
+          </p>
+          <p className="alt-link">
+            Don't have an account? <Link to="/register">Register</Link>
+          </p>
+        </form>
+      </div>
 
-          {otpSent && (
+      {/* Mobile Login Box */}
+      <div className="login-box">
+        <h2>Mobile Login</h2>
+        <form onSubmit={handleMobileLogin}>
+          <div style={{ display: 'flex', gap: '0.5rem' }}>
             <input
               type="text"
-              placeholder="Enter OTP"
-              value={otp}
-              onChange={(e) => setOtp(e.target.value)}
+              style={{ width: '30%' }}
+              placeholder="Country"
+              value={countryCode}
+              onChange={(e) => setCountryCode(e.target.value)}
               required
             />
-          )}
+            <input
+              type="text"
+              placeholder="Mobile Number"
+              value={mobile}
+              onChange={(e) => setMobile(e.target.value)}
+              required
+            />
+          </div>
 
-       
-          
-          <p className="alt-link">
-            Don't have an account? <a href="/register">Register</a>
-          </p>
+          <input
+            type="text"
+            placeholder="Enter Captcha"
+            value={captcha}
+            onChange={(e) => setCaptcha(e.target.value)}
+            required
+          />
+          <p className="captcha-demo">Captcha: <strong>AB12X9</strong></p>
+
+
+            <button id="send-otp" type="submit">Send OTP</button>
+
+       <div className="otp-box">
+  <input
+    type="text"
+    placeholder="Enter OTP"
+    value={otp}
+    onChange={(e) => setOtp(e.target.value)}
+    required
+    className="otp-input"
+  />
+  <button type="button" onClick={handleOtpSubmit}>
+    Submit OTP
+  </button>
+</div>
+
+
+          <p className="alt-link">Use your registered number to receive a login code.</p>
         </form>
       </div>
     </div>
